@@ -1,13 +1,18 @@
 import toast, { Toaster } from 'react-hot-toast'
 import css from "./SearchBar.module.css"
 import { FaSearch } from "react-icons/fa"
-const SearchBar = ({ onSubmit }) => {
+import { FC, FormEvent } from 'react'
+
+interface SearchBarProps {
+  onSubmit: (inputSearch: string) => void;
+}
+const SearchBar:FC<SearchBarProps> = ({ onSubmit }) => {
     
-const handleOnSubmit = (event) => {
+const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.target;
-    const inputSearch = form.elements.search.value;
-          if (inputSearch.trim() === "") {
+    const form = event.target  as HTMLFormElement;
+    const inputSearch = (form.querySelector<HTMLInputElement>('input[name="search"]') || {}).value;
+          if (!inputSearch || inputSearch.trim() === "") {
               toast('Please enter search term!', {
                   style: {
                       borderRadius: '10px',

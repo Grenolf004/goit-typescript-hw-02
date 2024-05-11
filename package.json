@@ -1,5 +1,5 @@
 {
-  "name": "goit-react-hw-03",
+  "name": "goit-react-hw-04",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,8 +24,10 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
+    "@types/react-modal": "^3.16.3",
+    "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.0",

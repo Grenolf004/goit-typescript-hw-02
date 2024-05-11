@@ -1,6 +1,13 @@
 import  "./ImageModal.module.css"
 import Modal from 'react-modal'
 import css from './ImageModal.module.css'
+import { FC } from "react";
+import { Photo } from "../../types";
+
+interface ImageModalProps{
+  onClose:() => void;
+  photo: Photo; 
+}
 
 const customStyles = {
     content: {
@@ -16,15 +23,16 @@ const customStyles = {
 };
 
 Modal.setAppElement('#root');
+Modal.defaultStyles.overlay = Modal.defaultStyles.overlay || {};
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.871)';
-const ImageModal = ({onClose, urlModal,isOpen,description}) => {
+const ImageModal: FC<ImageModalProps>  = ({onClose, photo}) => {
   return (
     <Modal
-        isOpen={isOpen}
-        onRequestClose={onClose}
-        style={customStyles}  
+      isOpen={true}
+      onRequestClose={onClose}
+      style={customStyles}  
     >
-        <img className={css.modal_image} src={urlModal} alt={description} />
+        <img className={css.modal_image} src={photo.urls.regular} alt={photo.alt_description} />
     </Modal>
   )
 }
